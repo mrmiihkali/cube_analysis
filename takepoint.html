@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<script src='mets.js'></script>
+<script src='Rockwell-Kazaross.met'></script>
+<script src='met.js'></script>
+
+<body>
+
+<script>
+function score_options() {
+  for (var i = 0; i < current_met.length; i++) {
+    document.write("<option value=" + (i + 1) + ">" + (i + 1) + "-away</option>")
+  }
+}
+
+function away_changed() {
+
+  you_away = document.getElementById("you_away")
+  opp_away = document.getElementById("opp_away")
+  cube_value = document.getElementById("cube_value")
+  
+  document.getElementById("tp_dc_value").innerHTML = "Dead: " + (100 * takepoint_dc(you_away.value, opp_away.value, cube_value.value)).toFixed(2)
+  document.getElementById("tp_lc_value").innerHTML = "Live: " + (100 * takepoint_lc(you_away.value, opp_away.value, cube_value.value)).toFixed(2)
+}
+
+</script>
+
+<div>
+  <div style="float:left;">
+    <p>You</p>
+    <select id="you_away" onchange="away_changed()">
+      <script>score_options()</script>
+    </select>
+  </div>
+
+  <div style="margin-left:10px;float:left;">
+    <p>Opponent</p>
+    <select id="opp_away" onchange="away_changed()">
+      <script>score_options()</script>
+    </select>
+  </div>
+
+  <div style="margin-left:10px;float:left;">
+    <p>Cube</p>
+    <select id="cube_value" onchange="away_changed()">
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=4>4</option>
+      <option value=8>8</option>
+    </select>
+  </div>
+
+</div>
+
+<div style="clear: both;">
+  <br>
+  <p>Your takepoint</p>
+  <p id="tp_dc_value"></p>
+  <p id="tp_lc_value"></p>
+</div>
+
+</body>
+</html>
