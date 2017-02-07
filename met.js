@@ -34,8 +34,7 @@ function load_met(name) {
 }
 // Cube at _current_ value
 function takepoint_dc(aw1, aw2, cube) {
-
-  recube = cube
+  recube = cube * 2
 
   aw1 -= 1
   aw2 -= 1
@@ -43,8 +42,8 @@ function takepoint_dc(aw1, aw2, cube) {
     return 'n/a'
 
   pass = aw2 >= cube ? current_met[aw1][aw2 - cube] : 0
-  lose = aw2 >= recube * 2 ? current_met[aw1][aw2 - recube * 2] : 0
-  win = aw1 >= recube * 2 ? current_met[aw1 - recube * 2][aw2] : 1
+  lose = aw2 >= recube ? current_met[aw1][aw2 - recube] : 0
+  win = aw1 >= recube ? current_met[aw1 - recube][aw2] : 1
 
   risk = pass - lose 
   gain = win - pass

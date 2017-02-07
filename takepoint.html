@@ -19,8 +19,14 @@ function away_changed() {
   opp_away = document.getElementById("opp_away")
   cube_value = document.getElementById("cube_value")
   
-  document.getElementById("tp_dc_value").innerHTML = "Dead: " + (100 * takepoint_dc(you_away.value, opp_away.value, cube_value.value)).toFixed(2)
-  document.getElementById("tp_lc_value").innerHTML = "Live: " + (100 * takepoint_lc(you_away.value, opp_away.value, cube_value.value)).toFixed(2)
+  document.getElementById("tp_dc_value").innerHTML = "Dead: " + (100 * takepoint_dc(
+    parseInt(you_away.value),
+    parseInt(opp_away.value),
+    parseInt(cube_value.value))).toFixed(2)
+  document.getElementById("tp_lc_value").innerHTML = "Live: " + (100 * takepoint_lc(
+    parseInt(you_away.value),
+    parseInt(opp_away.value),
+    parseInt(cube_value.value))).toFixed(2)
 }
 
 </script>
